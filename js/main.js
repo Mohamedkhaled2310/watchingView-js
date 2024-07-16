@@ -177,14 +177,27 @@ document.addEventListener('DOMContentLoaded', function () {
     element.style.transition = `${property} ${duration}ms`;
     element.style[property] = value;
   }
+ 
+
 
   function pickColor(mainColor = '--main-color', border = true, borderWidth = '1px', borderStyle = 'solid', borderColor = '#ddd') {
+    let storageColor = localStorage.getItem("color");  
+    if(storageColor != null){
+        document.documentElement.style.setProperty(mainColor,storageColor);
+  }
     if (border) {
       document.querySelector('.default').style.border = `${borderWidth} ${borderStyle} ${borderColor}`;
     }
+ 
     colorElems.forEach(elem => {
       elem.addEventListener('click', function () {
-        document.documentElement.style.setProperty(mainColor, window.getComputedStyle(elem).backgroundColor);
+     
+        document.documentElement.style.setProperty(mainColor,window.getComputedStyle(elem).backgroundColor  );
+        localStorage.setItem('color', window.getComputedStyle(elem).backgroundColor);
+
+       
+
+        console.log(storageColor);
         if (border) {
           elem.style.border = `${borderWidth} ${borderStyle} ${borderColor}`;
           colorElems.forEach(sibling => {
@@ -333,7 +346,7 @@ document.getElementById('userVPass').addEventListener('input', function() {
   enableSubmitButton();
 });
 
-// Toggle password visibility
+
 document.getElementById('showPass').addEventListener('click', function() {
   var passInput = document.getElementById('userPass');
   var passVInput = document.getElementById('userVPass');
