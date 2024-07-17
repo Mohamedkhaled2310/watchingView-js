@@ -144,6 +144,7 @@ h1, h2, h3, h4, h5{
     line-height:1 !important
   }
 
+
 }
 @media screen and (min-width: 992px) {
   .movieDetails h3{
@@ -299,7 +300,6 @@ h1, h2, h3, h4, h5{
   background-color: #b9006c;
 }
 
-/*LOADING*/
 
 
 #btn-up{
@@ -308,4 +308,12 @@ h1, h2, h3, h4, h5{
   right: 50px;
   display: none;
   z-index: 100000;
+}
+
+
+@media screen and (max-width: 678px) {
+  .openbar{
+    height: 70px !important;
+    margin-top: 50%;
+  }
 }
